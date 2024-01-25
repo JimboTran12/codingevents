@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
    <nav th:replace="fragments :: navigation"></nav>
-   <form method="post" action="/events/create">
+   <form method="post" th:action="@{/events/create}">
       <div class="form-group">
          <label>Name
             <input type="text" name="name" class="form-control">

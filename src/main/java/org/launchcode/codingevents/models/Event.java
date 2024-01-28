@@ -18,15 +18,27 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description) {
+    private EventType type;
+
+    public Event(String name, String description, String contactEmail, EventType event) {
         this();
         this.name = name;
         this.description = description;
+        this.contactEmail = contactEmail;
+        this.type = event;
     }
 
     public Event() {
         this.id = nextID;
         nextID++;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public String getName() {

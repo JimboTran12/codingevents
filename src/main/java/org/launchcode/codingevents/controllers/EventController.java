@@ -3,6 +3,7 @@ package org.launchcode.codingevents.controllers;
 import jakarta.validation.Valid;
 import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
+import org.launchcode.codingevents.models.EventType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,6 +24,7 @@ public class EventController {
     public String renderCreateForm(Model model) {
         model.addAttribute("title","Create Events");
         model.addAttribute(new Event());
+        model.addAttribute("types", EventType.values());
         return "events/create";
     }
 
@@ -30,6 +32,7 @@ public class EventController {
     public String createEvent(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title","Create Events");
+            model.addAttribute("types", EventType.values());
             return "events/create";
         }
         EventData.add(newEvent);

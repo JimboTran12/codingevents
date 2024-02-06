@@ -2,10 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body>
-<h1>Coding Events</h1>
 <nav th:replace="fragments :: navigation"></nav>
-<ol>
-    <li th:each="type: ${types}" th:text="${type.displayName}"></li>
-</ol>
+
 </body>
 </html>

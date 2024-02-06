@@ -4,5 +4,8 @@
 <body>
 <h1>Coding Events</h1>
 <nav th:replace="fragments :: navigation"></nav>
+<ol>
+    <li th:each="type: ${types}" th:text="${type.displayName}"></li>
+</ol>
 </body>
 </html>

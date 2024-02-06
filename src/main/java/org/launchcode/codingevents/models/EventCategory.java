@@ -8,10 +8,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class EventCategory {
-    @Id
-    @GeneratedValue
-    private int ID;
+public class EventCategory extends AbstractEntity{
+
     @Size(min=3, message = "Name must be longer than 3 letters")
     private String name;
 
@@ -28,22 +26,7 @@ public class EventCategory {
         this.name = name;
     }
 
-    public int getID() {
-        return ID;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EventCategory that = (EventCategory) o;
-        return getID() == that.getID();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getID(), getName());
-    }
 
     @Override
     public String toString() {

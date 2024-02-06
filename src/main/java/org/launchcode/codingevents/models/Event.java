@@ -10,15 +10,13 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class Event {
+public class Event extends AbstractEntity{
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
     @Size(max = 500, message = "Description too long")
     private String description;
-    @Id
-    @GeneratedValue
-    private int id;
+
 
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email. Try again.")
@@ -59,9 +57,7 @@ public class Event {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public String getContactEmail() {
         return contactEmail;
@@ -76,16 +72,5 @@ public class Event {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return getId() == event.getId();
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 }
